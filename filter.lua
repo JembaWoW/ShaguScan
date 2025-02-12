@@ -3,6 +3,7 @@ if ShaguScan.disabled then return end
 local filter = { }
 
 filter.player = function(unit)
+  if UnitIsUnit(unit,"player") or not GetGuildInfo(unit) then return false end
   return UnitIsPlayer(unit) and true or false
 end
 
@@ -12,6 +13,12 @@ end
 
 filter.infight = function(unit)
   return UnitAffectingCombat(unit) and true or false
+end
+
+filter.notinfight = function(unit)
+  local temp = true
+  if UnitAffectingCombat(unit) then temp = false end
+  return temp
 end
 
 filter.dead = function(unit)
@@ -234,22 +241,17 @@ filter.range = function(unit)
   return CheckInteractDistance(unit, 4) and true or false
 end
 
-local level = nil
-filter.level = function(unit, args)
-  level = tonumber(args)
-  return level and UnitLevel(unit) == level and true or false
-end
-
-local level = nil
-filter.minlevel = function(unit, args)
-  level = tonumber(args)
-  return level and UnitLevel(unit) >= level and true or false
-end
-
-local level = nil
-filter.maxlevel = function(unit, args)
-  level = tonumber(args)
-  return level and UnitLevel(unit) <= level and true or false
+filter.plague = function(unit)
+  for i=1, 40 do
+    local icon = "Interface\\Icons\\spell_shadow_curseoftounges"
+    local debuff = UnitDebuff(unit,i)
+    if debuff then
+      if strlower(icon) == strlower(debuff) then
+        return unit
+      end
+    end
+  end
+  return false
 end
 
 ShaguScan.filter = filter
