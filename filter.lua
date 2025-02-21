@@ -241,6 +241,24 @@ filter.range = function(unit)
   return CheckInteractDistance(unit, 4) and true or false
 end
 
+local level = nil
+filter.level = function(unit, args)
+  level = tonumber(args)
+  return level and UnitLevel(unit) == level and true or false
+end
+
+local level = nil
+filter.minlevel = function(unit, args)
+  level = tonumber(args)
+  return level and UnitLevel(unit) >= level and true or false
+end
+
+local level = nil
+filter.maxlevel = function(unit, args)
+  level = tonumber(args)
+  return level and UnitLevel(unit) <= level and true or false
+end
+
 filter.plague = function(unit)
   for i=1, 40 do
     local icon = "Interface\\Icons\\spell_shadow_curseoftounges"
