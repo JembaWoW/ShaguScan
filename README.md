@@ -3,7 +3,7 @@
 <img src="./screenshots/raidtargets.jpg" float="right" align="right">
 
 An addon that scans for nearby units and filters them by custom attributes.
-It's made for World of Warcraft: Vanilla (1.12.1) and is only tested on [Turtle WoW](https://turtle-wow.org/).
+It's made for World of Warcraft: Vanilla (1.12.1).
 
 The addon can be used to see all marked raid targets, detect rare mobs, find nearby players that decided to do pvp, and much more!
 
@@ -14,7 +14,7 @@ The addon can be used to see all marked raid targets, detect rare mobs, find nea
 > It won't work without it. Really.
 
 ## Installation (Vanilla, 1.12)
-1. Download **[Latest Version](https://github.com/shagu/ShaguScan/archive/master.zip)**
+1. Download **[Latest Version](https://github.com/JembaWoW/ShaguScan/archive/refs/heads/master.zip)**
 2. Unpack the Zip file
 3. Rename the folder "ShaguScan-master" to "ShaguScan"
 4. Copy "ShaguScan" into Wow-Directory\Interface\AddOns
@@ -85,5 +85,7 @@ You can build the lists as you want them, there are now limits as long as the fi
 - **level:NUMBER**: units that are level NUMBER
 - **minlevel:NUMBER**: units that are at least level NUMBER
 - **maxlevel:NUMBER**: units that are at most level NUMBER
+- **plague**: untis that have AQ20/AQ40 plague effect
+- **notinfight**: only units that are **not** in combat
 
 New and custom filters are easy to implement, if you wish to create your own, please have a look at: [filter.lua](./filter.lua).
